@@ -1,18 +1,22 @@
 package com.mystore.app;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 class Product {
-    
+
     private int id;
     private String name;
     private String barcode;
 
-    Barcode barCoder = new Barcode();
+    @Autowired
+    private Barcode barCoder;  // Spring will inject this
 
     public Product() {
         System.out.println("In Product constructor");
     }
 
-    // Getter methods
     public int getId() {
         return id;
     }
@@ -25,7 +29,6 @@ class Product {
         return barcode;
     }
 
-    // Setter methods
     public void setId(int id) {
         this.id = id;
     }
@@ -42,5 +45,4 @@ class Product {
     public String toString() {
         return "Product{id=" + id + ", name='" + name + "', barcode='" + barcode + "'}";
     }
-
 }
